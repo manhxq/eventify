@@ -1,4 +1,7 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
+import { createUser, updateUser } from '@/lib/actions/user.actions'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -20,7 +23,20 @@ export default function Home() {
             Book and learn helpful tips from 3,168+ mentors in world-class companies with our global community.
           </p>
 
-          <Button size={"lg"} className='button w-full sm:w-fit'>
+          <Button size={"lg"} className='button w-full sm:w-fit' onClick={async () => {
+            const user = {
+              clerkId: "BCDEFGHIJKLMNOPQRSTUV", 
+              firstName: 'John',
+              lastName: 'Doe25', 
+              userName: 'johnny86',
+              email: 'johny86@example.com',
+              photo: 'https://i.pravatar.cc/300?img=32',
+            };
+            
+            
+            console.log(user);
+            const updatedUser = await createUser(user)
+          }}>
             <Link href={"#events"}>
               Explore Now
             </Link>
